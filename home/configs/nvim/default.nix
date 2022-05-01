@@ -18,6 +18,7 @@
                 # cmp related packages
                 nvim-cmp
                 cmp-nvim-lsp
+                lspkind-nvim
                 cmp-path
                 cmp-buffer
                 nvim-lspconfig

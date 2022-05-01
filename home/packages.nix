@@ -12,7 +12,7 @@
     vscode
     
     # Internet
-    firefox brave tdesktop discord vlc
+    firefox brave tdesktop discord vlc zoom-us
 
     # bridges
 
@@ -21,5 +21,8 @@
 
     # GUI
     vlc
+
+    # language servers
+    elixir_ls haskell-language-server rnix-lsp
   ];
 }
