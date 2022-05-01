@@ -12,7 +12,9 @@
     vscode
     
     # Internet
-    firefox brave
+    firefox brave tdesktop discord vlc
+
+    # bridges
 
     #dev
     git

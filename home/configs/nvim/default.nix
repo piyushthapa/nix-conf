@@ -20,6 +20,7 @@
                 cmp-nvim-lsp
                 cmp-path
                 cmp-buffer
+                nvim-lspconfig
 
 	];
 }
