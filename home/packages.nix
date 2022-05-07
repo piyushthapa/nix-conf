@@ -14,13 +14,14 @@
     # Internet
     firefox brave tdesktop discord vlc zoom-us
 
-    # bridges
-
     #dev
-    git
+    git jetbrains.datagrip
 
     # GUI
     vlc
+
+    # Fonts
+    jetbrains-mono
 
     # language servers
     elixir_ls haskell-language-server rnix-lsp
