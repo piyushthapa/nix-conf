@@ -8,3 +8,4 @@ augroup elixir
 augroup END
 
 let g:mix_format_on_save = 1
+let g:neomake_elixir_enabled_makers = ['credo']

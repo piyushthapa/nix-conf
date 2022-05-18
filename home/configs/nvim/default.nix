@@ -43,6 +43,7 @@ in
         vim-airline
         nvim-treesitter
         fzf-vim
+        neomake
   
         # git
         blamer
