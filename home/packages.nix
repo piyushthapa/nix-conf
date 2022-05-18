@@ -3,7 +3,7 @@
 {
   home.packages = with pkgs; [
     # Cli tools
-    ripgrep fzf gnupg unzip curl wget  gcc
+    ripgrep fzf gnupg unzip curl wget  gcc agrep
 
     # terminal
     alacritty tmux 
