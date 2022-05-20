@@ -2,6 +2,16 @@
 
 let 
 
+  ellis-gruvbox = pkgs.vimUtils.buildVimPlugin {
+    name = "ellis-gruvbox";
+    src = pkgs.fetchFromGitHub {
+      owner = "ellisonleao";
+      repo = "gruvbox.nvim";
+      rev = "72930977a442a2de2592ed39168c018bef90e086";
+      sha256 = "2XwfbqfiziJH8gObXeWlcfSUmCif4j+cGfFVPYld2cw=";
+    };
+  };
+
   blamer = pkgs.vimUtils.buildVimPlugin {
     name = "blamer";
     src = pkgs.fetchFromGitHub {
@@ -35,13 +45,19 @@ in
 {
   enable = true;
   withNodeJs = true;  # coc
-  viAlias = true;
   vimAlias = true;
+  withPython3 = true;
+  package = pkgs.neovim-nightly;
   extraConfig = builtins.readFile ./init.vim;
   plugins = with pkgs.vimPlugins; [
-        gruvbox-nvim 
+        (nvim-treesitter.withPlugins (
+          plugins: with plugins; [
+            tree-sitter-nix
+          ]
+        ))
+
+        ellis-gruvbox
         vim-airline
-        nvim-treesitter
         fzf-vim
         neomake
   
@@ -51,7 +67,6 @@ in
         # Languages
         haskell-vim
         vim-nix
-        coc-nvim
   
         # cmp related packages
         nvim-cmp
@@ -64,7 +79,5 @@ in
         # Elixir
         vim-mix-format
         vim-elixir
-        coc-elixir
   ];
-
 }

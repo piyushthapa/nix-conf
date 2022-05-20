@@ -27,7 +27,7 @@
     elixir_ls haskell-language-server rnix-lsp
 
     # misc
-    foliate 
+    foliate
 
   ];
 }

@@ -11,6 +11,23 @@ end
 
 lspkind.init()
 
+local on_attach = function(client, bufnr)
+  local opts = { noremap=true, silent=true }
+
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cr', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cd', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+end
+
 -- Setting up few LSP servers
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -21,7 +38,8 @@ local lspconfig = require('lspconfig')
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
 -- elixir lsp setup
 require'lspconfig'.elixirls.setup{
-  cmd = {"elixir-ls"};
+  cmd = {"elixir-ls"},
+  on_attach = on_attach,
   capabilities = capabilities,
   settings = {
     elixirLs = {
@@ -33,7 +51,7 @@ require'lspconfig'.elixirls.setup{
 local servers = {"hls", "rnix"}
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
-    -- on_attach = my_custom_on_attach,
+    on_attach = on_attach,
     capabilities = capabilities,
   }
 end
@@ -113,16 +131,25 @@ cmp.setup {
     format = lspkind.cmp_format {
       with_text = true,
       menu = {
-        buffer = "[buf]",
+        buffer = "[BUFF]",
         nvim_lsp = "[LSP]",
-        path = "[path]",
+        path = "[PATH]",
       },
     },
   },
 
   experimental = {
-    native_menu = false,
+    native_menu = true,
     ghost_text = false,
   },
+  require'nvim-treesitter.configs'.setup {
+	ensure_installed = "maintained",
+  	sync_install = false,
+  	ignore_install = { },
+  	highlight = {
+    		enable = true,
+    		disable = { },
+       },
+  }
 }
 EOF
