@@ -1,28 +1,18 @@
 {config, pkgs, ... }:
 
 let 
-  withLang = lang: builtins.elem lang config.language-support;
   vimsettings = import ./configs/nvim;
+  kittysettings = import ./configs/kitty.nix;
 in
 {
   imports = [
     ./packages.nix
-    ./configs/language-support.nix
   ];
 
   programs.neovim = vimsettings pkgs;
+  programs.kitty = kittysettings pkgs;
 
-  xdg.configFile."nvim/coc-settings.json".source = pkgs.writeTextFile {
-    name = "coc-settings.json";
-    text = builtins.readFile ./configs/nvim/coc-settings.json;
-  };
-
-  programs.tmux = {
-    enable = true;
-    clock24= true;
-    newSession = true;
-    extraConfig =  ''
-      bind-key -n C-Tab next-window
-    '';
+  home.sessionVariables = {
+    TERMINAL="kitty";
   };
 }

@@ -6,7 +6,7 @@
     ripgrep fzf gnupg unzip curl wget  gcc agrep
 
     # terminal
-    alacritty tmux 
+    alacritty tmux kitty
 
     # editors 
     vscode

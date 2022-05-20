@@ -6,11 +6,6 @@
     home-manager.url = "github:nix-community/home-manager/release-21.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-
-   # neovim-nightly-overlay = {
-   #   url = "github:nix-community/neovim-nightly-overlay";
-   #   inputs.nixpkgs.follows = "nixpkgs";
-   # };
   };
 
   outputs = {nixpkgs, home-manager, neovim-nightly-overlay, ... }:

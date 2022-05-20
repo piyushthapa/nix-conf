@@ -139,7 +139,7 @@ cmp.setup {
   },
 
   experimental = {
-    native_menu = true,
+    native_menu = false,
     ghost_text = false,
   },
   require'nvim-treesitter.configs'.setup {

@@ -53,6 +53,13 @@ in
         (nvim-treesitter.withPlugins (
           plugins: with plugins; [
             tree-sitter-nix
+            tree-sitter-haskell
+            tree-sitter-markdown
+            tree-sitter-comment
+            tree-sitter-svelte
+            tree-sitter-json
+            tree-sitter-rst
+            tree-sitter-vim
           ]
         ))
 
