@@ -12,18 +12,22 @@
     vscode
     
     # Internet
-    firefox brave tdesktop discord vlc zoom-us
+    firefox brave tdesktop discord vlc zoom-us transmission-qt
 
-    #dev
-    git jetbrains.datagrip
+    # dev
+    git 
 
-    # GUI
-    vlc
+    # db explorer
+    robo3t jetbrains.datagrip
 
     # Fonts
     jetbrains-mono
 
     # language servers
     elixir_ls haskell-language-server rnix-lsp
+
+    # misc
+    foliate 
+
   ];
 }
