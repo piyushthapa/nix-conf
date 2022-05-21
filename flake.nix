@@ -8,7 +8,7 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
-  outputs = {nixpkgs, home-manager, neovim-nightly-overlay, ... }:
+  outputs = inputs @ {nixpkgs, home-manager, neovim-nightly-overlay, ... }:
   let 
     system = "x86_64-linux";
 
@@ -28,10 +28,11 @@
         inherit system;
   
         modules = [
-	  ./system/configuration.nix
-	];
+          ./system/configuration.nix
+        ];
       };
     };
+
     
     hm = {
        piyush = home-manager.lib.homeManagerConfiguration {

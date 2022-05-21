@@ -2,6 +2,7 @@
 
 let 
   vimsettings = import ./configs/nvim;
+  rofi_settings = import ./programs/rofi;
   kittysettings = import ./configs/kitty.nix;
 in
 {
@@ -11,6 +12,7 @@ in
 
   programs.neovim = vimsettings pkgs;
   programs.kitty = kittysettings pkgs;
+  programs.rofi = rofi_settings pkgs;
 
   home.sessionVariables = {
     TERMINAL="kitty";
