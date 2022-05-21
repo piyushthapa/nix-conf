@@ -33,4 +33,8 @@
     color15 = "#fcf4dc";
 
   };
+
+  keybindings = {
+    "ctrl+shift+enter" = "new_window_with_cwd";
+  };
 }

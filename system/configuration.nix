@@ -128,6 +128,7 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  # Some udev role to add Trezor device
   services.udev.extraRules = ''
     # TREZOR
     SUBSYSTEM=="usb", ATTR{idVendor}=="534c", ATTR{idProduct}=="0001", MODE="0660", GROUP="plugdev", TAG+="uaccess", TAG+="udev-acl", SYMLINK+="trezor%n"
@@ -143,6 +144,12 @@
   fonts.fonts = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
   ];
+
+  # Nix auto garbage collect
+  nix.gc = {
+    automatic = true;
+    options = "--delete-older-than 8d";
+  };
 
   system.stateVersion = "21.11"; # Did you read the comment?
 
