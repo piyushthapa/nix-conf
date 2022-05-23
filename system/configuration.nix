@@ -1,9 +1,13 @@
-{ config, lib, pkgs, inputs, ... }:
+
+# Edit this configuration file to define what should be installed on
+# your system.  Help is available in the configuration.nix(5) man page
+# and in the NixOS manual (accessible by running ‘nixos-help’).
+
+{ config, pkgs, ... }:
 
 {
   imports =
-    [
-      ./wm/xmonad.nix
+    [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -44,12 +48,11 @@
   
 
   # Configure keymap in X11
-  services.xserver.layout = "us";
+  # services.xserver.layout = "us";
   # services.xserver.xkbOptions = "eurosign:e";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-  services.printing.drivers = [pkgs.samsungUnifiedLinuxDriver];
 
   # Enable sound.
   sound.enable = true;
@@ -76,6 +79,7 @@
      isNormalUser = true;
      extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
    };
+
    users.defaultUserShell = pkgs.zsh;
 
   # List packages installed in system profile. To search, run:
@@ -97,10 +101,11 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+
+   programs.gnupg.agent = {
+     enable = true;
+     enableSSHSupport = true;
+   };
 
   # List services that you want to enable:
 
@@ -123,9 +128,6 @@
     binaryCachePublicKeys = [ "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=" "iohk.cachix.org-1:DpRUyj7h7V830dp/i6Nti+NEO2/nhblbov/8MW7Rqoo=" ];
   };
 
-  nixpkgs.config.allowUnfree = true;
-
-  # Some udev role to add Trezor device
   services.udev.extraRules = ''
     # TREZOR
     SUBSYSTEM=="usb", ATTR{idVendor}=="534c", ATTR{idProduct}=="0001", MODE="0660", GROUP="plugdev", TAG+="uaccess", TAG+="udev-acl", SYMLINK+="trezor%n"
