@@ -64,6 +64,7 @@ in
         ))
 
         ellis-gruvbox
+        vim-one
         vim-airline
         fzf-vim
         neomake
