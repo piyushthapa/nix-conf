@@ -19,7 +19,7 @@
 
       # Enable the Gnome3 desktop manager
       displayManager.gdm.enable    = true;
-      displayManager.gdm.wayland   = false; # screen-sharing is broken
+      displayManager.gdm.wayland   = true; # screen-sharing is broken
       desktopManager.gnome3.enable = true;
     };
   };

@@ -13,8 +13,4 @@ in
   programs.neovim = vimsettings pkgs;
   programs.kitty = kittysettings pkgs;
   programs.rofi = rofi_settings pkgs;
-
-  home.sessionVariables = {
-    TERMINAL="kitty";
-  };
 }

@@ -2,16 +2,6 @@
 
 let 
 
-  ellis-gruvbox = pkgs.vimUtils.buildVimPlugin {
-    name = "ellis-gruvbox";
-    src = pkgs.fetchFromGitHub {
-      owner = "ellisonleao";
-      repo = "gruvbox.nvim";
-      rev = "72930977a442a2de2592ed39168c018bef90e086";
-      sha256 = "2XwfbqfiziJH8gObXeWlcfSUmCif4j+cGfFVPYld2cw=";
-    };
-  };
-
   blamer = pkgs.vimUtils.buildVimPlugin {
     name = "blamer";
     src = pkgs.fetchFromGitHub {
@@ -19,16 +9,6 @@ let
       repo = "blamer.nvim";
       rev = "v1.3.0";
       sha256 = "uIrbnoS2llGjn/mLMftO4F6gss0xnPCE39yICd0N51Y=";
-    };
-  };
-
-  coc-elixir = pkgs.vimUtils.buildVimPlugin {
-    name = "coc-elixir";
-    src = pkgs.fetchFromGitHub {
-      owner = "elixir-lsp";
-      repo = "coc-elixir";
-      rev = "v0.7.0";
-      sha256 = "uPQF9r1BM3yL4cPGE7kqAirN3jyY98YSWfZW9sPGvys=";
     };
   };
 
@@ -41,6 +21,17 @@ let
       sha256 = "P6GNRVB9HOxY3JP8nW7Ax/b4LLTpteaxUzBtE5KrNyo=";
     };
   };
+
+  nvim-treesitter = pkgs.vimUtils.buildVimPlugin {
+    name = "treesitter";
+    src = pkgs.fetchFromGitHub {
+      owner = "nvim-treesitter";
+      repo = "nvim-treesitter";
+      rev = "a10b603a2cd6d336412e996970e91566492562d2";
+      sha256 = "UzrJhJk4zPk+VNUxma4qwsEGgZynfd4RPEk2mSbqQms=";
+    };
+  };
+
 in
 {
   enable = true;
@@ -50,31 +41,20 @@ in
   package = pkgs.neovim-nightly;
   extraConfig = builtins.readFile ./init.vim;
   plugins = with pkgs.vimPlugins; [
-        (nvim-treesitter.withPlugins (
-          plugins: with plugins; [
-            tree-sitter-nix
-            tree-sitter-haskell
-            tree-sitter-markdown
-            tree-sitter-comment
-            tree-sitter-svelte
-            tree-sitter-json
-            tree-sitter-rst
-            tree-sitter-vim
-          ]
-        ))
 
-        ellis-gruvbox
-        vim-one
+	nvim-treesitter
+	onedark-vim
         vim-airline
         fzf-vim
         neomake
   
         # git
         blamer
+	vim-fugitive
   
         # Languages
-        haskell-vim
-        vim-nix
+        # haskell-vim
+        # vim-nix
   
         # cmp related packages
         nvim-cmp

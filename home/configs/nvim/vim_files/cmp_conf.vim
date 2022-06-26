@@ -142,14 +142,14 @@ cmp.setup {
     native_menu = false,
     ghost_text = false,
   },
-  require'nvim-treesitter.configs'.setup {
-	ensure_installed = "maintained",
-  	sync_install = false,
-  	ignore_install = { },
-  	highlight = {
-    		enable = true,
-    		disable = { },
-       },
+ require'nvim-treesitter.configs'.setup {
+ 	ensure_installed = {},
+ 	sync_install = false,
+ 	ignore_install = { },
+ 	highlight = {
+ 		enable = true,
+ 		disable = { },
+ 	},
   }
 }
 EOF

@@ -15,7 +15,7 @@
     firefox brave tdesktop discord vlc zoom-us transmission-qt
 
     # dev
-    git 
+    git  insomnia
 
     # db explorer
     robo3t jetbrains.datagrip

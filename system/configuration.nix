@@ -147,7 +147,7 @@
   # Nix auto garbage collect
   nix.gc = {
     automatic = true;
-    options = "--delete-older-than 8d";
+    options = "--delete-older-than 14d";
   };
 
   system.stateVersion = "21.11"; # Did you read the comment?
