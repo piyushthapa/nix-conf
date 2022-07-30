@@ -2,8 +2,8 @@
   description = "System config";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-21.11";
-    home-manager.url = "github:nix-community/home-manager/release-21.11";
+    nixpkgs.url = "nixpkgs/nixos-22.05";
+    home-manager.url = "github:nix-community/home-manager/release-22.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
@@ -15,10 +15,16 @@
 
     pkgs = import nixpkgs {
       inherit system;
-      config = { allowUnfree = true; };
+      config = { 
+      	allowUnfree = true; 
+	permittedInsecurePackages = [
+          "electron-13.6.9"
+        ];
+      };
       overlays = [
         neovim-nightly-overlay.overlay
       ];
+
     };
 
     lib = nixpkgs.lib;

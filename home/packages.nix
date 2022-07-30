@@ -6,7 +6,7 @@
     ripgrep fzf gnupg unzip curl wget  gcc agrep xclip
 
     # terminal
-    alacritty tmux kitty
+    tmux kitty
 
     # editors 
     vscode
@@ -15,7 +15,7 @@
     firefox brave tdesktop discord vlc zoom-us transmission-qt
 
     # dev
-    git  insomnia
+    insomnia git
 
     # db explorer
     robo3t jetbrains.datagrip
@@ -27,7 +27,10 @@
     elixir_ls haskell-language-server rnix-lsp
 
     # misc
-    foliate
+    foliate logseq
+
+    #haskell
+    cabal-install ghc
 
   ];
 }

@@ -22,13 +22,13 @@ let
     };
   };
 
-  nvim-treesitter = pkgs.vimUtils.buildVimPlugin {
+ nvim-treesitter = pkgs.vimUtils.buildVimPlugin {
     name = "treesitter";
     src = pkgs.fetchFromGitHub {
       owner = "nvim-treesitter";
       repo = "nvim-treesitter";
-      rev = "a10b603a2cd6d336412e996970e91566492562d2";
-      sha256 = "UzrJhJk4zPk+VNUxma4qwsEGgZynfd4RPEk2mSbqQms=";
+      rev = "91725df58155d47c5b65cd4847d0ccac86d39cac";
+      sha256 = "x5Iv4cKOmbOfKgQDxxcmxCF1iqLW5W69m5lV28/0ZUc=";
     };
   };
 
@@ -42,30 +42,31 @@ in
   extraConfig = builtins.readFile ./init.vim;
   plugins = with pkgs.vimPlugins; [
 
-	nvim-treesitter
-	onedark-vim
-        vim-airline
-        fzf-vim
-        neomake
+	    nvim-treesitter
+	    gruvbox-nvim
+	    onedark-vim
+	    lightline-vim
+      lightline-gruvbox-vim
+      fzf-vim
+      neomake
   
-        # git
-        blamer
-	vim-fugitive
+      blamer
+	    vim-fugitive
   
         # Languages
         # haskell-vim
         # vim-nix
   
         # cmp related packages
-        nvim-cmp
-        cmp-nvim-lsp
-        lspkind-nvim
-        cmp-path
-        cmp-buffer
-        nvim-lspconfig
+      nvim-cmp
+      cmp-nvim-lsp
+      lspkind-nvim
+      cmp-path
+      cmp-buffer
+      nvim-lspconfig
 
-        # Elixir
-        vim-mix-format
-        vim-elixir
+      # Elixir
+      vim-mix-format
+      vim-elixir
   ];
 }
