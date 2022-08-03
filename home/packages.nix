@@ -3,10 +3,10 @@
 {
   home.packages = with pkgs; [
     # Cli tools
-    ripgrep fzf gnupg unzip curl wget  gcc agrep xclip
+    ripgrep fzf gnupg unzip curl wget  gcc agrep xclip silver-searcher
 
     # terminal
-    tmux kitty
+    alacritty kitty
 
     # editors 
     vscode
@@ -15,7 +15,7 @@
     firefox brave tdesktop discord vlc zoom-us transmission-qt
 
     # dev
-    insomnia git
+    insomnia
 
     # db explorer
     robo3t jetbrains.datagrip
@@ -27,10 +27,9 @@
     elixir_ls haskell-language-server rnix-lsp
 
     # misc
-    foliate logseq
+    foliate
 
     #haskell
     cabal-install ghc
-
   ];
 }
