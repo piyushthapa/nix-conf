@@ -26,10 +26,10 @@
     # language servers
     elixir_ls haskell-language-server rnix-lsp
 
-    # misc
-    foliate
-
     #haskell
     cabal-install ghc
+
+    # misc
+    foliate simplenote
   ];
 }
