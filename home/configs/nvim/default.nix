@@ -42,20 +42,16 @@ in
   extraConfig = builtins.readFile ./init.vim;
   plugins = with pkgs.vimPlugins; [
 
-	    nvim-treesitter
-	    gruvbox-nvim
-	    onedark-vim
-	    lightline-vim
+      nvim-treesitter
+      gruvbox-nvim
+      onedark-vim
+      lightline-vim
       lightline-gruvbox-vim
       fzf-vim
       neomake
   
       blamer
-	    vim-fugitive
-  
-        # Languages
-        # haskell-vim
-        # vim-nix
+      vim-fugitive
   
         # cmp related packages
       nvim-cmp
@@ -68,5 +64,8 @@ in
       # Elixir
       vim-mix-format
       vim-elixir
+
+      # Haskell
+      vim-stylish-haskell 
   ];
 }

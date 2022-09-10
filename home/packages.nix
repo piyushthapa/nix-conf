@@ -2,8 +2,11 @@
 
 {
   home.packages = with pkgs; [
+    #system 
+    socat
+
     # Cli tools
-    ripgrep fzf gnupg unzip curl wget  gcc agrep xclip silver-searcher
+    ripgrep fzf gnupg unzip curl wget  gcc agrep xclip silver-searcher updog
 
     # terminal
     alacritty kitty
@@ -15,7 +18,7 @@
     firefox brave tdesktop discord vlc zoom-us transmission-qt
 
     # dev
-    insomnia
+    insomnia postman
 
     # db explorer
     robo3t jetbrains.datagrip
@@ -27,9 +30,12 @@
     elixir_ls haskell-language-server rnix-lsp
 
     #haskell
-    cabal-install ghc
+    cabal-install ghc stylish-haskell
 
     # misc
-    foliate simplenote
+    foliate simplenote toggldesktop
+
+    # languages
+    python310 nodejs
   ];
 }
