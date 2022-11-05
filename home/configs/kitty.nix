@@ -4,10 +4,10 @@
   enable = true;
   settings = {
     font_size = "12.0";
-    font_family = "DroidSansMono Nerd Font Mono";
-    bold_font = "auto";
-    italic_font = "auto";
-    bold_italic_font = "auto";
+    font_family = "JetBrains Mono";
+    bold_font = "JetBrains Mono";
+    italic_font = "JetBrains Mono";
+    bold_italic_font = "JetBrains Mono";
     background = "#1d2021";
     selection_background="#a89984";
     foreground = "#83a598";

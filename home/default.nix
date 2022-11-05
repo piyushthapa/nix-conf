@@ -13,4 +13,12 @@ in
   programs.neovim = vimsettings pkgs;
   programs.kitty = kittysettings pkgs;
   programs.rofi = rofi_settings pkgs;
+
+  gtk = {
+    enable = true;
+    theme = {
+      package = pkgs.gruvbox-dark-gtk;
+      name = "Gruvbox dark";
+    }; 
+  };
 }
