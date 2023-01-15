@@ -6,7 +6,7 @@
     socat
 
     # Cli tools
-    ripgrep fzf gnupg unzip curl wget  gcc agrep xclip silver-searcher updog kubectl magic-wormhole
+    ripgrep fzf gnupg unzip curl wget  gcc agrep xclip silver-searcher updog kubectl magic-wormhole ngrok
 
     # terminal
     alacritty kitty
@@ -21,24 +21,27 @@
     insomnia postman
 
     # db explorer
-    robo3t jetbrains.datagrip pgadmin4
+    robo3t jetbrains.datagrip pgadmin4 dbeaver
 
     # Fonts
     jetbrains-mono
 
     # language servers
-    elixir_ls haskell-language-server rnix-lsp
+    elixir_ls rnix-lsp
 
     #haskell
     cabal-install ghc stylish-haskell
 
     # misc
-    foliate simplenote
+    foliate simplenote	protonvpn-gui	libreoffice
 
     # languages
     python310 
 
     #gnome extensions
     gnomeExtensions.gsconnect  gruvbox-dark-gtk
+
+    # Rust toolchain
+    rustup
   ];
 }

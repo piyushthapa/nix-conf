@@ -2,13 +2,12 @@
   description = "System config";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-22.05";
-    home-manager.url = "github:nix-community/home-manager/release-22.05";
+    nixpkgs.url = "nixpkgs/nixos-22.11";
+    home-manager.url = "github:nix-community/home-manager/release-22.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
-  outputs = { nixpkgs, home-manager, neovim-nightly-overlay, ... }:
+  outputs = { nixpkgs, home-manager, ... }:
 
   let 
     system = "x86_64-linux";
@@ -21,10 +20,6 @@
           "electron-13.6.9"
         ];
       };
-      overlays = [
-        neovim-nightly-overlay.overlay
-      ];
-
     };
 
     lib = nixpkgs.lib;
@@ -43,12 +38,17 @@
     
     hm = {
        piyush = home-manager.lib.homeManagerConfiguration {
-         inherit system pkgs;
-	 username = "piyush";
-         homeDirectory = "/home/piyush";
-         configuration = {
-	   imports = [./home];
-         };
+       	 pkgs = pkgs;
+	 modules = [
+	   ./home/default.nix
+	   {
+	     home = {
+	      username = "piyush";
+              homeDirectory = "/home/piyush";
+	      stateVersion = "22.05";
+	     };
+	   }
+	 ];
       };
     };
   };

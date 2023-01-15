@@ -110,8 +110,9 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
-    binaryCaches          = [ "https://hydra.iohk.io" "https://iohk.cachix.org" ];
-    binaryCachePublicKeys = [ "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=" "iohk.cachix.org-1:DpRUyj7h7V830dp/i6Nti+NEO2/nhblbov/8MW7Rqoo=" ];
+    settings = {
+      trusted-public-keys = [ "cache.iog.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=" "iohk.cachix.org-1:DpRUyj7h7V830dp/i6Nti+NEO2/nhblbov/8MW7Rqoo=" ];
+    };
   };
 
   services.udev.extraRules = ''
@@ -128,21 +129,6 @@
   fonts.fonts = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
   ];
-  
-  networking.firewall.checkReversePath = false; # maybe "loose" also works, untested
-    networking.firewall = {
-   # if packets are still dropped, they will show up in dmesg
-   logReversePathDrops = true;
-   # wireguard trips rpfilter up
-   extraCommands = ''
-     ip46tables -t raw -I nixos-fw-rpfilter -p udp -m udp --sport 51820 -j RETURN
-     ip46tables -t raw -I nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN
-   '';
-   extraStopCommands = ''
-     ip46tables -t raw -D nixos-fw-rpfilter -p udp -m udp --sport 51820 -j RETURN || true
-     ip46tables -t raw -D nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN || true
-   '';
-  };
 
   # List services that you want to enable:
   # Enable the OpenSSH daemon.
@@ -166,7 +152,7 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
 
-  system.stateVersion = "22.05"; # Did you read the comment?
+  system.stateVersion = "22.11"; # Did you read the comment?
 
 }
 

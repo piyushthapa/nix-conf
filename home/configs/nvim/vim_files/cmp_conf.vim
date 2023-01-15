@@ -38,8 +38,9 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 local lspconfig = require('lspconfig')
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
+
 -- elixir lsp setup
-require'lspconfig'.elixirls.setup{
+lspconfig["elixirls"].setup{
   cmd = {"elixir-ls"},
   on_attach = on_attach,
   capabilities = capabilities,
@@ -50,7 +51,20 @@ require'lspconfig'.elixirls.setup{
   }
 }
 
-local servers = {"hls", "rnix"}
+-- haskell lsp setup
+lspconfig["hls"].setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = {"haskell-language-server", "--lsp"},
+  settings = {
+    haskell = {
+      formattingProvider = "stylish-haskell"
+    }
+  }
+}
+
+-- default setup for other lsp
+local servers = {"rnix"}
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,

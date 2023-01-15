@@ -1,7 +1,6 @@
 {pkgs, config, lib, ... }:
 
 let 
-
   blamer = pkgs.vimUtils.buildVimPlugin {
     name = "blamer";
     src = pkgs.fetchFromGitHub {
@@ -38,7 +37,6 @@ in
   withNodeJs = true;  # coc
   vimAlias = true;
   withPython3 = true;
-  package = pkgs.neovim-nightly;
   extraConfig = builtins.readFile ./init.vim;
   plugins = with pkgs.vimPlugins; [
 
@@ -49,11 +47,11 @@ in
       lightline-gruvbox-vim
       fzf-vim
       neomake
-  
       blamer
       vim-fugitive
+      vim-autoformat 
   
-        # cmp related packages
+      # cmp related packages
       nvim-cmp
       cmp-nvim-lsp
       lspkind-nvim
@@ -67,5 +65,6 @@ in
 
       # Haskell
       vim-stylish-haskell 
+      haskell-vim
   ];
 }
