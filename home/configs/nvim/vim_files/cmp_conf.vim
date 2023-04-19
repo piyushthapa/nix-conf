@@ -33,12 +33,11 @@ end
 -- Setting up few LSP servers
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local lspconfig = require('lspconfig')
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-
 -- elixir lsp setup
 lspconfig["elixirls"].setup{
   cmd = {"elixir-ls"},
@@ -62,6 +61,42 @@ lspconfig["hls"].setup {
     }
   }
 }
+
+
+-- Configure LSP through rust-tools.nvim plugin.
+-- rust-tools will configure and enable certain LSP features for us.
+-- See https://github.com/simrat39/rust-tools.nvim#configuration
+local opts = {
+  tools = {
+    runnables = {
+      use_telescope = true,
+    },
+    inlay_hints = {
+      auto = true,
+      show_parameter_hints = false,
+      parameter_hints_prefix = "",
+      other_hints_prefix = "",
+    },
+  },
+}
+
+-- setup rust
+lspconfig["rust_analyzer"].setup{
+  on_attach = on_attach,
+
+  -- server-specific settings
+  settings = {
+    ["rust-analyzer"] = {	
+      -- enable clippy on save
+      checkOnSave = {
+        command = "clippy",
+      },
+    }
+  }
+}
+
+-- Setup rust-tools
+require("rust-tools").setup(opts)
 
 -- default setup for other lsp
 local servers = {"rnix"}

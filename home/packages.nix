@@ -3,7 +3,7 @@
 {
   home.packages = with pkgs; [
     #system 
-    socat
+    socat zlib zlib.dev
 
     # Cli tools
     ripgrep fzf gnupg unzip curl wget  gcc agrep xclip silver-searcher updog kubectl magic-wormhole ngrok
@@ -33,7 +33,7 @@
     cabal-install ghc stylish-haskell
 
     # misc
-    foliate simplenote	protonvpn-gui	libreoffice
+    foliate simplenote libreoffice
 
     # languages
     python310 
@@ -43,5 +43,7 @@
 
     # Rust toolchain
     rustup
+
+    protonvpn-cli
   ];
 }

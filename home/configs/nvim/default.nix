@@ -21,16 +21,6 @@ let
     };
   };
 
- nvim-treesitter = pkgs.vimUtils.buildVimPlugin {
-    name = "treesitter";
-    src = pkgs.fetchFromGitHub {
-      owner = "nvim-treesitter";
-      repo = "nvim-treesitter";
-      rev = "91725df58155d47c5b65cd4847d0ccac86d39cac";
-      sha256 = "x5Iv4cKOmbOfKgQDxxcmxCF1iqLW5W69m5lV28/0ZUc=";
-    };
-  };
-
 in
 {
   enable = true;
@@ -39,10 +29,9 @@ in
   withPython3 = true;
   extraConfig = builtins.readFile ./init.vim;
   plugins = with pkgs.vimPlugins; [
-
       nvim-treesitter
       gruvbox-nvim
-      onedark-vim
+      onedark-nvim
       lightline-vim
       lightline-gruvbox-vim
       fzf-vim
@@ -66,5 +55,10 @@ in
       # Haskell
       vim-stylish-haskell 
       haskell-vim
+
+      # Rust
+      rust-tools-nvim
+      rust-vim
+
   ];
 }

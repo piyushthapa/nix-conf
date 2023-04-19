@@ -16,3 +16,5 @@ inoremap <Up> <Nop>
 
 " Setup keys for tabs
 nmap tt :tabnew <CR>
+
+autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
