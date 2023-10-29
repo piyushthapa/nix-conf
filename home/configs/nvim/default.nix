@@ -1,4 +1,4 @@
-{pkgs, config, lib, ... }:
+{pkgs, ... }:
 
 let 
   blamer = pkgs.vimUtils.buildVimPlugin {
@@ -21,44 +21,97 @@ let
     };
   };
 
+  aiken-lang = pkgs.vimUtils.buildVimPlugin {
+    name = "aiken-lang";
+    src = pkgs.fetchFromGitHub {
+      owner = "aiken-lang";
+      repo = "editor-integration-nvim";
+      rev = "259203266da4ef367a4a41baa60fe49177d55598";
+      sha256 = "vlhqunKmQTUGPCPq3sSW3QOKJgnAwQdFnGzWKEjGNzE=";
+    };
+  };
+
+  my-nvim = pkgs.vimUtils.buildVimPlugin {
+    name  = "my-nvim";
+    src = ../../../config/nvim;
+  };
+
+
 in
 {
   enable = true;
   withNodeJs = true;  # coc
   vimAlias = true;
   withPython3 = true;
-  extraConfig = builtins.readFile ./init.vim;
+  extraConfig = ''
+    lua <<EOF
+      require 'Plugins'.init()
+    EOF
+  '';
+
   plugins = with pkgs.vimPlugins; [
-      nvim-treesitter
-      gruvbox-nvim
-      onedark-nvim
-      lightline-vim
-      lightline-gruvbox-vim
-      fzf-vim
-      neomake
-      blamer
-      vim-fugitive
-      vim-autoformat 
-  
-      # cmp related packages
-      nvim-cmp
-      cmp-nvim-lsp
-      lspkind-nvim
-      cmp-path
-      cmp-buffer
-      nvim-lspconfig
 
-      # Elixir
-      vim-mix-format
-      vim-elixir
+    # languages
+    nvim-lspconfig
+    nvim-treesitter.withAllGrammars
+    rust-tools-nvim
+    aiken-lang
+    vim-mix-format 
 
-      # Haskell
-      vim-stylish-haskell 
-      haskell-vim
+    # Git
+    blamer
+    gitsigns-nvim
 
-      # Rust
-      rust-tools-nvim
-      rust-vim
+    # theme
+    catppuccin-nvim
 
+    # terminal
+    vim-floaterm
+
+    # telescope
+    plenary-nvim
+    popup-nvim
+    telescope-nvim
+
+    # Misc
+    lualine-nvim
+    nvim-colorizer-lua
+    nvim-notify
+    ChatGPT-nvim
+    copilot-lua
+    nerdcommenter
+    nvim-treesitter-context
+
+    # My lua configuration
+    my-nvim
   ];
+
+  extraPackages = with pkgs; [
+      # language servers
+      haskell-language-server
+      jsonnet-language-server
+      lua-language-server
+      nil
+      nodePackages."bash-language-server"
+      nodePackages."diagnostic-languageserver"
+      nodePackages."dockerfile-language-server-nodejs"
+      nodePackages."typescript"
+      nodePackages."typescript-language-server"
+      nodePackages."vscode-langservers-extracted"
+      nodePackages."yaml-language-server"
+      rust-analyzer
+
+      # formatters
+      nixpkgs-fmt
+      rustfmt
+      terraform
+
+      # tools
+      cargo
+      fd
+      gcc
+      ghc
+      lazydocker
+      yarn
+  ]; 
 }
