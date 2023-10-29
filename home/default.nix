@@ -1,4 +1,4 @@
-{config, pkgs, ... }:
+{pkgs, ... }:
 
 let 
   vimsettings = import ./configs/nvim;
@@ -9,7 +9,7 @@ in
   imports = [
     ./packages.nix
   ];
-
+   
   programs.neovim = vimsettings pkgs;
   programs.kitty = kittysettings pkgs;
   programs.rofi = rofi_settings pkgs;

@@ -2,13 +2,12 @@
   description = "System config";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-22.11";
-    home-manager.url = "github:nix-community/home-manager/release-22.11";
+    nixpkgs.url = "nixpkgs/nixos-23.05";
+    home-manager.url = "github:nix-community/home-manager/release-23.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
-
+  outputs = { self, nixpkgs, home-manager, ... }:
   let 
     system = "x86_64-linux";
 
@@ -45,7 +44,7 @@
 	     home = {
 	      username = "piyush";
               homeDirectory = "/home/piyush";
-	      stateVersion = "22.05";
+	      stateVersion = "23.05";
 	     };
 	   }
 	 ];

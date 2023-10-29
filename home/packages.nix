@@ -3,37 +3,40 @@
 {
   home.packages = with pkgs; [
     #system 
-    socat
+    socat	
 
     # Cli tools
-    ripgrep fzf gnupg unzip curl wget  gcc agrep xclip silver-searcher updog kubectl magic-wormhole ngrok
+    ripgrep fzf gnupg unzip curl wget  gcc agrep xclip silver-searcher updog kubectl magic-wormhole ngrok  zlib zlib.dev
 
     # terminal
     alacritty kitty
 
+    # Haskell
+    stylish-haskell
+
     # editors 
     vscode
+
+    # Vscode
+    vscode-extensions.github.copilot
     
     # Internet
-    firefox brave tdesktop discord vlc zoom-us transmission-qt
+    firefox brave tdesktop discord vlc zoom-us transmission-gtk
 
     # dev
     insomnia postman
 
     # db explorer
-    robo3t jetbrains.datagrip pgadmin4 dbeaver
+    robo3t jetbrains.datagrip dbeaver
 
     # Fonts
     jetbrains-mono
 
     # language servers
-    elixir_ls rnix-lsp
-
-    #haskell
-    cabal-install ghc stylish-haskell
+    rnix-lsp
 
     # misc
-    foliate simplenote	protonvpn-gui	libreoffice
+    foliate simplenote libreoffice
 
     # languages
     python310 
@@ -43,5 +46,7 @@
 
     # Rust toolchain
     rustup
+
+    protonvpn-cli
   ];
 }
