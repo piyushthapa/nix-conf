@@ -11,7 +11,7 @@ in
   ];
    
   programs.neovim = vimsettings pkgs;
-  programs.kitty = kittysettings pkgs;
+  programs.kitty = kittysettings;
   programs.rofi = rofi_settings pkgs;
 
   gtk = {
