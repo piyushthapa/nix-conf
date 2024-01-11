@@ -21,7 +21,7 @@
     vscode-extensions.github.copilot
     
     # Internet
-    firefox brave tdesktop discord vlc zoom-us transmission-gtk
+    firefox brave tdesktop discord vlc zoom-us transmission-gtk slack
 
     # dev
     insomnia postman
