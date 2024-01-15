@@ -5,6 +5,8 @@ local function init()
   require 'Plugins.lsp'
   require 'Plugins.terminal'
   require 'Plugins.language'
+  require 'Plugins.nvim_tree'
+  require 'Plugins.dev_icons'
 end
 
 return {

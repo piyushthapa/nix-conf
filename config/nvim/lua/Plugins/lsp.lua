@@ -86,7 +86,6 @@ local language_servers = {
     bashls = {},
     cssls = {},
     dagger = {},
-    hls = {},
     html = {},
     jsonls = {},
     jsonnet_ls = {},

@@ -37,6 +37,7 @@ let
   };
 
 
+
 in
 {
   enable = true;
@@ -57,6 +58,7 @@ in
     rust-tools-nvim
     aiken-lang
     vim-mix-format 
+    haskell-tools-nvim
 
     # Git
     blamer
@@ -81,6 +83,10 @@ in
     copilot-lua
     nerdcommenter
     nvim-treesitter-context
+    nvim-tree-lua
+    nvim-web-devicons
+    kanagawa-nvim
+
 
     # My lua configuration
     my-nvim
@@ -88,7 +94,6 @@ in
 
   extraPackages = with pkgs; [
       # language servers
-      haskell-language-server
       jsonnet-language-server
       lua-language-server
       nil
