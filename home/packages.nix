@@ -1,5 +1,6 @@
 { pkgs, ... }:
 
+
 {
   home.packages = with pkgs; [
     #system 
@@ -24,7 +25,7 @@
     firefox brave tdesktop discord vlc zoom-us transmission-gtk slack
 
     # dev
-    insomnia postman
+    insomnia
 
     # db explorer
     robo3t jetbrains.datagrip dbeaver
@@ -36,7 +37,7 @@
     rnix-lsp
 
     # misc
-    foliate simplenote libreoffice
+    foliate  libreoffice
 
     # languages
     python310 
@@ -47,6 +48,6 @@
     # Rust toolchain
     rustup
 
-    protonvpn-cli
+    protonvpn-cli cachix
   ];
 }

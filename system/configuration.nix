@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports =
@@ -36,11 +36,11 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
-  
+
+
 
   # Configure keymap in X11
   # services.xserver.layout = "us";
@@ -64,7 +64,7 @@
     enable = true;
     settings = {
       General = {
-	Enable = "Source,Sink,Media,Socket";
+	      Enable = "Source,Sink,Media,Socket";
       };
     };
   };
@@ -127,7 +127,7 @@
     KERNEL=="hidraw*", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="53c1", MODE="0660", GROUP="plugdev", TAG+="uaccess", TAG+="udev-acl"
   '';
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
   ];
 
@@ -169,7 +169,6 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
 
-  system.stateVersion = "23.05"; # Did you read the comment?
-
+  system.stateVersion = "23.11"; # Did you read the comment?
 }
 
