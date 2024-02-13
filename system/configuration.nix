@@ -112,7 +112,12 @@
       experimental-features = nix-command flakes
     '';
     settings = {
-      trusted-public-keys = [ "cache.iog.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=" "iohk.cachix.org-1:DpRUyj7h7V830dp/i6Nti+NEO2/nhblbov/8MW7Rqoo=" ];
+      trusted-public-keys = [ 
+        "cache.iog.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=" 
+        "iohk.cachix.org-1:DpRUyj7h7V830dp/i6Nti+NEO2/nhblbov/8MW7Rqoo=" 
+        "ea-emurgo-labs.cachix.org-1:C4qCB9BfOH+otex5Mr5YclmyXer66BA7Oe4H1BmOzII="
+      ];
+      trusted-users = [ "root" "piyush" ];
     };
   };
 
