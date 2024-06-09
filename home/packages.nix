@@ -7,7 +7,7 @@
     socat	git
 
     # Cli tools
-    ripgrep fzf  unzip curl wget  gcc agrep xclip silver-searcher updog kubectl magic-wormhole ngrok  zlib zlib.dev
+    ripgrep fzf  unzip curl wget  gcc agrep xclip silver-searcher updog kubectl magic-wormhole ngrok  zlib zlib.dev protonvpn-cli protonvpn-gui
 
     # terminal
     alacritty kitty
@@ -28,7 +28,7 @@
     insomnia
 
     # db explorer
-    robo3t jetbrains.datagrip dbeaver
+    robo3t jetbrains.datagrip dbeaver-bin 
 
     # Fonts
     jetbrains-mono
@@ -42,7 +42,7 @@
     python310 deno
 
     #gnome extensions
-    gnomeExtensions.gsconnect  gruvbox-dark-gtk
+    gnomeExtensions.gsconnect  gruvbox-dark-gtk gnome.gnome-tweaks
 
     # Rust toolchain
     rustup

@@ -14,6 +14,17 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.kernelModules = [ "amdgpu" ];
+
+  boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_6_1.override {
+    argsOverride = rec {
+      src = pkgs.fetchurl {
+            url = "mirror://kernel/linux/kernel/v6.x/linux-${version}.tar.xz";
+            sha256 = "sha256-Vo7KrruLh8fIJGu6Z7yDQClyvzT1gRZRotPNVI/3tnE=";
+      };
+      version = "6.1.80";
+      modDirVersion = "6.1.80";
+      };
+  });
   
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.settings.trusted-users = [ "root" "piyush" ];
@@ -49,7 +60,10 @@
 
   # Configure keymap & graphics in X11
   services.xserver = {
-    layout = "us";
+    xkb = {
+      layout = "us";
+      variant = "";
+    };
     videoDrivers = [ "amdgpu" ];
   };
 
@@ -74,6 +88,12 @@
     #media-session.enable = true;
   };
 
+  # Bluetooh 
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  services.blueman.enable = true;
+
+  
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -150,6 +170,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "24.05"; # Did you read the comment?
 
 }
