@@ -16,7 +16,7 @@
     stylish-haskell
 
     # editors 
-    vscode lapce
+    vscode lapce zed-editor
 
     # Vscode
     vscode-extensions.github.copilot
