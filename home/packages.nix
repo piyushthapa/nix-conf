@@ -10,10 +10,7 @@
     ripgrep fzf  unzip curl wget  gcc agrep xclip silver-searcher updog kubectl magic-wormhole ngrok  zlib zlib.dev protonvpn-cli protonvpn-gui
 
     # terminal
-    alacritty kitty
-
-    # Haskell
-    stylish-haskell
+    alacritty kitty zellij
 
     # editors 
     vscode lapce zed-editor
@@ -36,7 +33,7 @@
     # language servers
 
     # misc
-    foliate  libreoffice
+    foliate  libreoffice typst
 
     # languages
     python310 deno
