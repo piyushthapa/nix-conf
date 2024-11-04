@@ -3,9 +3,11 @@
 let
   vimsettings = import ./configs/nvim;
   kittysettings = import ./configs/kitty.nix;
-  hyperlandsettings = import ./configs/hyperland;
-  waybarsettings = import ./configs/hyperland/waybar;
-in {
+  hyperlandsettings = import ./configs/hyprland;
+  waybarsettings = import ./configs/hyprland/waybar;
+  hyperlock_settings = import ./configs/hyprland/hyprlock.nix;
+in
+{
 
   imports = [ ./packages.nix ];
 
@@ -13,6 +15,7 @@ in {
   programs.kitty = kittysettings;
   wayland.windowManager.hyprland = hyperlandsettings pkgs;
   programs.waybar = waybarsettings;
+  programs.hyprlock = hyperlock_settings;
 
   home.pointerCursor = {
     gtk.enable = true;

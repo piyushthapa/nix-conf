@@ -10,7 +10,7 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-
+    hyprlock.url = "github:hyprwm/Hyprlock";
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs:
@@ -29,7 +29,8 @@
 
       lib = nixpkgs.lib;
 
-    in {
+    in
+    {
       nixosConfigurations = {
         nixos = lib.nixosSystem {
           specialArgs = { inherit inputs; };

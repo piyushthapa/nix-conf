@@ -54,6 +54,7 @@ in
 
     # theme
     catppuccin-nvim
+    gruvbox
 
     # terminal
     vim-floaterm

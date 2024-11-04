@@ -13,6 +13,8 @@
       "$mod, T, exec, kitty"
       "$mod, SPACE, exec, fuzzel"
       "$mod, F, exec, dolphin"
+      "$mod, L, exec, hyperlock"
+
       # Workspaces
       "$mod, 1, workspace, 1"
       "$mod, 2, workspace, 2"

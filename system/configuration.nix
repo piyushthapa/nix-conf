@@ -5,7 +5,8 @@
 { config, inputs, pkgs, ... }:
 
 {
-  imports = [ # Include the results of the hardware scan.
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
 
@@ -145,7 +146,12 @@
 
   # Fonts
   fonts.packages = with pkgs;
-    [ (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; }) ];
+    [
+      font-awesome
+      (nerdfonts.override {
+        fonts = [ "FiraCode" "DroidSansMono" "FiraMono" "JetBrainsMono" ];
+      })
+    ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
