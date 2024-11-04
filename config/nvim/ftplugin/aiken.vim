@@ -28,4 +28,3 @@ function GetAikenIndent(lnum)
 
   return l:ind
 endfunction
-

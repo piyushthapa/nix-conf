@@ -12,6 +12,7 @@
     bind = [
       "$mod, T, exec, kitty"
       "$mod, SPACE, exec, fuzzel"
+      "$mod, F, exec, dolphin"
       # Workspaces
       "$mod, 1, workspace, 1"
       "$mod, 2, workspace, 2"

@@ -14,3 +14,6 @@ vim.opt.wrap = false
 vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
+
+-- Setup indent lines
+require("ibl").setup()

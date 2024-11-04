@@ -3,6 +3,7 @@ local function init()
   require 'Plugins.theme'
   require 'Plugins.telescope'
   require 'Plugins.lsp'
+  require 'Plugins.cmp'
   require 'Plugins.terminal'
   require 'Plugins.language'
   require 'Plugins.nvim_tree'

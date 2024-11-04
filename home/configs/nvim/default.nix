@@ -11,16 +11,6 @@ let
     };
   };
 
-  vim-mix-format = pkgs.vimUtils.buildVimPlugin {
-    name = "vim-mix-format";
-    src = pkgs.fetchFromGitHub {
-      owner = "mhinz";
-      repo = "vim-mix-format";
-      rev = "01a31ef82aa52697d589574da50723980eeae456";
-      sha256 = "P6GNRVB9HOxY3JP8nW7Ax/b4LLTpteaxUzBtE5KrNyo=";
-    };
-  };
-
   aiken-lang = pkgs.vimUtils.buildVimPlugin {
     name = "aiken-lang";
     src = pkgs.fetchFromGitHub {
@@ -31,12 +21,14 @@ let
     };
   };
 
+
   my-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "my-nvim";
     src = ../../../config/nvim;
   };
 
-in {
+in
+{
   enable = true;
   withNodeJs = true; # coc
   vimAlias = true;
@@ -54,7 +46,6 @@ in {
     nvim-treesitter.withAllGrammars
     rust-tools-nvim
     aiken-lang
-    vim-mix-format
     haskell-tools-nvim
 
     # Git
@@ -66,6 +57,8 @@ in {
 
     # terminal
     vim-floaterm
+
+    indent-blankline-nvim
 
     # telescope
     plenary-nvim
@@ -83,6 +76,16 @@ in {
     nvim-tree-lua
     nvim-web-devicons
     kanagawa-nvim
+
+    # Auto completion
+    nvim-cmp
+    cmp-nvim-lsp
+    cmp_luasnip
+    luasnip
+    cmp-buffer
+    cmp-path
+    friendly-snippets
+
 
     # My lua configuration
     my-nvim

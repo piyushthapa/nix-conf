@@ -125,6 +125,11 @@
     nil
     nixfmt-classic
     pinentry-curses
+
+    ## Dolphin file manager support
+    kdePackages.qtwayland
+    kdePackages.qtsvg
+    dolphin
   ];
 
   programs.zsh = {
