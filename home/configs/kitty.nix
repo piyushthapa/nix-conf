@@ -48,7 +48,5 @@
     color15 = "#A5ADCB";
   };
 
-  keybindings = {
-    "ctrl+shift+enter" = "new_window_with_cwd";
-  };
+  keybindings = { "ctrl+shift+enter" = "new_window_with_cwd"; };
 }

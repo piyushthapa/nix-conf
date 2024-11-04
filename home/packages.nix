@@ -1,31 +1,58 @@
 { pkgs, ... }:
 
-
 {
   home.packages = with pkgs; [
     #system 
-    socat	git
+    socat
+    git
 
     # Cli tools
-    ripgrep fzf  unzip curl wget  gcc agrep xclip silver-searcher updog kubectl magic-wormhole ngrok  zlib zlib.dev protonvpn-cli protonvpn-gui
+    ripgrep
+    fzf
+    unzip
+    curl
+    wget
+    gcc
+    agrep
+    xclip
+    silver-searcher
+    updog
+    kubectl
+    magic-wormhole
+    ngrok
+    zlib
+    zlib.dev
+    protonvpn-cli
+    protonvpn-gui
 
     # terminal
-    alacritty kitty zellij
+    alacritty
+    kitty
+    zellij
 
     # editors 
-    vscode lapce zed-editor
+    vscode
 
     # Vscode
     vscode-extensions.github.copilot
-    
+
     # Internet
-    firefox brave tdesktop discord vlc zoom-us transmission-gtk slack
+    firefox
+    brave
+    tdesktop
+    discord
+    vlc
+    zoom-us
+    transmission-gtk
+    slack
 
     # dev
     insomnia
 
     # db explorer
-    robo3t jetbrains.datagrip dbeaver-bin 
+    robo3t
+    jetbrains.datagrip
+    dbeaver-bin
 
     # Fonts
     jetbrains-mono
@@ -33,18 +60,29 @@
     # language servers
 
     # misc
-    foliate  libreoffice typst
+    foliate
+    libreoffice
+    typst
 
     # languages
-    python310 deno
+    python310
+    deno
 
     #gnome extensions
-    gnomeExtensions.gsconnect  gruvbox-dark-gtk gnome.gnome-tweaks
+    gnomeExtensions.gsconnect
+    gruvbox-dark-gtk
+    gnome.gnome-tweaks
 
     # Rust toolchain
     rustup
 
-    protonvpn-cli cachix gpu-screen-recorder-gtk
+    protonvpn-cli
+    cachix
+    gpu-screen-recorder-gtk
+
+    #Hyprland
+    waybar
+    fuzzel
 
   ];
 }

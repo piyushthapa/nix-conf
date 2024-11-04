@@ -1,6 +1,6 @@
-{pkgs, ... }:
+{ pkgs, ... }:
 
-let 
+let
   blamer = pkgs.vimUtils.buildVimPlugin {
     name = "blamer";
     src = pkgs.fetchFromGitHub {
@@ -32,16 +32,13 @@ let
   };
 
   my-nvim = pkgs.vimUtils.buildVimPlugin {
-    name  = "my-nvim";
+    name = "my-nvim";
     src = ../../../config/nvim;
   };
 
-
-
-in
-{
+in {
   enable = true;
-  withNodeJs = true;  # coc
+  withNodeJs = true; # coc
   vimAlias = true;
   withPython3 = true;
   extraConfig = ''
@@ -57,7 +54,7 @@ in
     nvim-treesitter.withAllGrammars
     rust-tools-nvim
     aiken-lang
-    vim-mix-format 
+    vim-mix-format
     haskell-tools-nvim
 
     # Git
@@ -87,36 +84,35 @@ in
     nvim-web-devicons
     kanagawa-nvim
 
-
     # My lua configuration
     my-nvim
   ];
 
   extraPackages = with pkgs; [
-      # language servers
-      jsonnet-language-server
-      lua-language-server
-      nil
-      nodePackages."bash-language-server"
-      nodePackages."diagnostic-languageserver"
-      nodePackages."dockerfile-language-server-nodejs"
-      nodePackages."typescript"
-      nodePackages."typescript-language-server"
-      nodePackages."vscode-langservers-extracted"
-      nodePackages."yaml-language-server"
-      rust-analyzer
+    # language servers
+    jsonnet-language-server
+    lua-language-server
+    nil
+    nodePackages."bash-language-server"
+    nodePackages."diagnostic-languageserver"
+    nodePackages."dockerfile-language-server-nodejs"
+    nodePackages."typescript"
+    nodePackages."typescript-language-server"
+    nodePackages."vscode-langservers-extracted"
+    nodePackages."yaml-language-server"
+    rust-analyzer
 
-      # formatters
-      nixpkgs-fmt
-      rustfmt
-      terraform
+    # formatters
+    nixpkgs-fmt
+    rustfmt
+    terraform
 
-      # tools
-      cargo
-      fd
-      gcc
-      ghc
-      lazydocker
-      yarn
-  ]; 
+    # tools
+    cargo
+    fd
+    gcc
+    ghc
+    lazydocker
+    yarn
+  ];
 }

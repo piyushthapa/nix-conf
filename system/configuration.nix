@@ -2,38 +2,41 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, inputs, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.kernelModules = [ "amdgpu" ];
 
-  boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_6_1.override {
-    argsOverride = rec {
-      src = pkgs.fetchurl {
-            url = "mirror://kernel/linux/kernel/v6.x/linux-${version}.tar.xz";
-            sha256 = "sha256-Vo7KrruLh8fIJGu6Z7yDQClyvzT1gRZRotPNVI/3tnE=";
-      };
-      version = "6.1.80";
-      modDirVersion = "6.1.80";
-      };
-  });
-  
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nix.settings.trusted-users = [ "root" "piyush" ];
+  #boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_6_1.override {
+  #  argsOverride = rec {
+  #    src = pkgs.fetchurl {
+  #      url = "mirror://kernel/linux/kernel/v6.x/linux-${version}.tar.xz";
+  #      sha256 = "sha256-Vo7KrruLh8fIJGu6Z7yDQClyvzT1gRZRotPNVI/3tnE=";
+  #    };
+  #    version = "6.1.80";
+  #    modDirVersion = "6.1.80";
+  #  };
+  #});
+  nix.settings = {
+    substituters = [ "https://hyprland.cachix.org" ];
+    trusted-public-keys =
+      [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+    experimental-features = [ "nix-command" "flakes" ];
+    trusted-users = [ "root" "piyush" ];
 
+  };
 
   # Virtual machines
-  virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = [ "piyush" ];
-  virtualisation.virtualbox.host.enableExtensionPack = true;
+  #virtualisation.virtualbox.host.enable = true;
+  #users.extraGroups.vboxusers.members = [ "piyush" ];
+  #virtualisation.virtualbox.host.enableExtensionPack = true;
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -51,25 +54,27 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap & graphics in X11
-  services.xserver = {
-    xkb = {
-      layout = "us";
-      variant = "";
-    };
-    videoDrivers = [ "amdgpu" ];
+  # Enable hyperland
+  programs.hyprland = {
+    enable = true;
+    # set the flake package
+    package =
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    # make sure to also set the portal package, so that they are in sync
+    portalPackage =
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
+  # setup AMD GPU
+  services.xserver.enable = true;
+  services.xserver.videoDrivers = [ "amdgpu" ];
+
+  hardware.opengl.extraPackages = with pkgs; [ rocmPackages.clr.icd ];
+
+  #
   # Enable CUPS to print documents.
   services.printing.enable = true;
-  services.printing.drivers = [ pkgs.splix];
+  services.printing.drivers = [ pkgs.splix ];
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -92,7 +97,6 @@
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   services.blueman.enable = true;
 
-  
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -104,7 +108,7 @@
     packages = with pkgs; [
       firefox
       killall
-    #  thunderbird
+      #  thunderbird
     ];
   };
   users.defaultUserShell = pkgs.zsh;
@@ -115,9 +119,11 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
     zsh
+    nil
+    nixfmt-classic
     pinentry-curses
   ];
 
@@ -125,18 +131,14 @@
     enable = true;
     ohMyZsh = {
       enable = true;
-      plugins = [ "git"];
+      plugins = [ "git" ];
       theme = "robbyrussell";
     };
   };
 
   # Fonts
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
-  ];
-  
-
-
+  fonts.packages = with pkgs;
+    [ (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; }) ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -148,9 +150,6 @@
     enable = true;
     setSocketVariable = true;
   };
-
-  
-
 
   # List services that you want to enable:
 
