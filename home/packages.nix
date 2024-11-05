@@ -58,6 +58,7 @@
     jetbrains-mono
 
     # language servers
+    efm-langserver
 
     # misc
     foliate

@@ -147,6 +147,13 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
 })
 
+-- Setup Credo linting
+lspconfig.efm.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+  filetypes = { "elixir" }
+})
+
 -- Initialize servers
 for server, server_config in pairs(language_servers) do
   local config = {}
