@@ -1,7 +1,7 @@
 local function init()
   require 'Plugins.set'
-  require 'Plugins.theme'
   require 'Plugins.telescope'
+  require 'Plugins.theme'
   require 'Plugins.lsp'
   require 'Plugins.cmp'
   require 'Plugins.terminal'

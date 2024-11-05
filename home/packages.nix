@@ -63,15 +63,11 @@
     foliate
     libreoffice
     typst
+    pavucontrol
 
     # languages
     python310
     deno
-
-    #gnome extensions
-    gnomeExtensions.gsconnect
-    gruvbox-dark-gtk
-    gnome.gnome-tweaks
 
     # Rust toolchain
     rustup

@@ -1,6 +1,13 @@
-local gitsigns = require 'gitsigns'
-
-gitsigns.setup {}
+require("gitsigns").setup {
+  signs = {
+    add          = { text = ' |' },
+    change       = { text = '|' },
+    delete       = { text = '_' },
+    topdelete    = { text = '‾' },
+    changedelete = { text = '~' },
+    untracked    = { text = '┆' },
+  },
+}
 
 require("lualine").setup {
   options = {
@@ -20,4 +27,18 @@ require("lualine").setup {
   },
 }
 
+require("gruvbox").setup({
+  overrides = {
+    SignColumn = { link = "Normal" },
+    GruvboxGreenSign = { bg = "" },
+    GruvboxOrangeSign = { bg = "" },
+    GruvboxPurpleSign = { bg = "" },
+    GruvboxYellowSign = { bg = "" },
+    GruvboxRedSign = { bg = "" },
+    GruvboxBlueSign = { bg = "" },
+    GruvboxAquaSign = { bg = "" },
+  },
+})
+
+vim.o.background = "dark"
 vim.cmd.colorscheme "gruvbox"

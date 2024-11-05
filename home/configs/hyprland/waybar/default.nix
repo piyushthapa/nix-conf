@@ -5,22 +5,18 @@
     ${builtins.readFile ./waybar.css}
   '';
   settings = [{
-    height = 30;
     layer = "top";
     position = "top";
     tray = { spacing = 10; };
-    modules-center = [ "hyprland/window" ];
 
     modules-left = [ "hyprland/workspaces" ];
-
+    modules-center = [ "clock" ];
     modules-right = [
       "pulseaudio"
       "network"
       "cpu"
-      "memory"
       "temperature"
       "battery"
-      "clock"
       "tray"
     ];
 
@@ -35,12 +31,16 @@
         warning = 30;
       };
     };
-    clock = { format = "{:%H:%M}"; };
+
+    "clock" = {
+      tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+      format = "{:%a; %d %b, %I:%M %p}";
+    };
+
     cpu = {
       format = "{usage}% ";
       tooltip = false;
     };
-    memory = { format = "{}% "; };
 
     network = {
       interval = 1;
@@ -52,44 +52,36 @@
       format-wifi = "{essid} ({signalStrength}%) ";
     };
 
-    pulseaudio = {
-      format = "{volume}% {icon} {format_source}";
-      format-bluetooth = "{volume}% {icon} {format_source}";
-      format-bluetooth-muted = " {icon} {format_source}";
-      format-icons = {
-        car = "";
-        default = [ "" "" "" ];
-        handsfree = "";
-        headphones = "";
-        headset = "";
-        phone = "";
-        portable = "";
-      };
-      format-muted = " {format_source}";
+    "pulseaudio" = {
+      # scroll-step = 1; # %, can be a float
+      reverse-scrolling = 1;
+      format = "{volume}% {icon}  {format_source} ";
+      format-bluetooth = "{volume}% {icon} {format_source} ";
+      format-bluetooth-muted = " {icon} {format_source} ";
+      format-muted = " {format_source} ";
       format-source = "{volume}% ";
       format-source-muted = "";
+      format-icons = {
+        headphone = "";
+        hands-free = "";
+        headset = "";
+        phone = "";
+        portable = "";
+        car = "";
+        default = [ "" "" "" ];
+      };
       on-click = "pavucontrol";
-    };
-    temperature = {
-      critical-threshold = 80;
-      format = "{temperatureC}°C {icon}";
-      format-icons = [ "" "" "" ];
+      min-length = 13;
     };
 
-    "hyprland/workspaces" = {
-      format = "{icon}";
-      on-click = "activate";
-      format-icons = {
-        "1" = "1";
-        "2" = "2";
-        "3" = "3";
-        "4" = "4";
-        "5" = "5";
-        urgent = "";
-        active = "";
-        default = "";
-      };
-      sort-by-number = true;
+    "temperature" = {
+      # thermal-zone = 2;
+      # hwmon-path = "/sys/class/hwmon/hwmon2/temp1_input";
+      critical-threshold = 80;
+      # format-critical = "{temperatureC}°C {icon}";
+      format = "{temperatureC}°C {icon}";
+      format-icons = [ "" "" "" "" "" ];
+      tooltip = false;
     };
   }];
 }
