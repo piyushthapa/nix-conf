@@ -17,6 +17,7 @@ in
   programs.waybar = waybarsettings;
   programs.hyprlock = hyperlock_settings;
 
+
   home.pointerCursor = {
     gtk.enable = true;
     package = pkgs.bibata-cursors;
@@ -24,9 +25,10 @@ in
     size = 16;
   };
 
+
+
   home.file = {
     ".config/efm-langserver/config.yaml".text = builtins.readFile ./configs/efm-langserver/config.yaml;
-
   };
 
   gtk = {

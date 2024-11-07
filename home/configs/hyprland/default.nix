@@ -25,7 +25,7 @@
       "$mod, T, exec, kitty"
       "$mod, SPACE, exec, fuzzel"
       "$mod, F, exec, dolphin"
-      "$mod, L, exec, hyperlock"
+      "$mod, L, exec, hyprlock"
 
       # Workspaces
       "$mod, 1, workspace, 1"
@@ -37,6 +37,17 @@
       "$mod, 7, workspace, 7"
       "$mod, 8, workspace, 8"
       "$mod, 9, workspace, 9"
+
+      # toggle workspace 
+      "$mod, TAB, workspace, previous"
+    ];
+
+    bindl = [
+      # trigger when laptop lid is closed is turning on
+      ", switch:on:lid, exec, hyprctl keyword monitor 'eDP-1, disable'"
+
+      # trigger when the switch is turning off
+      ", switch:off:lid, exec, hyprctl keyword monitor 'eDP-1, 1920x1200@60, 0x0, 1'"
     ];
   };
 

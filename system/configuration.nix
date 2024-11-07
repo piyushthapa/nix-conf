@@ -34,6 +34,8 @@
 
   };
 
+
+
   # Virtual machines
   #virtualisation.virtualbox.host.enable = true;
   #users.extraGroups.vboxusers.members = [ "piyush" ];
@@ -162,6 +164,14 @@
   virtualisation.docker.rootless = {
     enable = true;
     setSocketVariable = true;
+  };
+
+  # setup PAM for hyperlock
+  security.pam.services.hyprlock = {
+    # This enables password authentication
+    text = ''
+      auth            include         login
+    '';
   };
 
   # List services that you want to enable:
