@@ -27,6 +27,9 @@
       "$mod, F, exec, dolphin"
       "$mod, L, exec, hyprlock"
 
+      # Kill current window
+      "$mod, Q, exec, hyprctl activewindow |grep pid |tr -d 'pid:'|xargs kill"
+
       # Workspaces
       "$mod, 1, workspace, 1"
       "$mod, 2, workspace, 2"
