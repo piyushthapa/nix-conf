@@ -18,6 +18,14 @@ in
   programs.hyprlock = hyperlock_settings;
 
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    xdgOpenUsePortal = true;
+  };
+
+  xdg.portal.config.common.default = "*";
+
   home.pointerCursor = {
     gtk.enable = true;
     package = pkgs.bibata-cursors;
@@ -25,27 +33,8 @@ in
     size = 16;
   };
 
-
-
   home.file = {
     ".config/efm-langserver/config.yaml".text = builtins.readFile ./configs/efm-langserver/config.yaml;
-  };
-
-  gtk = {
-    enable = true;
-    theme = {
-      package = pkgs.gruvbox-dark-gtk;
-      name = "Gruvbox dark";
-    };
-
-    iconTheme = {
-      package = pkgs.gnome.adwaita-icon-theme;
-      name = "Adwaita";
-    };
-
-    font = {
-      name = "Sans";
-      size = 11;
-    };
+    ".scripts/toggle-monitor.sh".text = builtins.readFile ./configs/scripts/toggle-monitor.sh;
   };
 }
