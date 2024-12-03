@@ -65,6 +65,8 @@
     libreoffice
     typst
     pavucontrol
+    openshot-qt
+    obs-studio
 
     # languages
     python310

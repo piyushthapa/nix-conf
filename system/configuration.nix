@@ -74,6 +74,12 @@
 
   hardware.opengl.extraPackages = with pkgs; [ rocmPackages.clr.icd ];
 
+  # Setup Trezor
+  services.trezord = {
+    enable = true;
+  };
+
+
   #
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -128,6 +134,8 @@
     nil
     nixfmt-classic
     pinentry-curses
+
+    trezord
 
     ## Dolphin file manager support
     kdePackages.qtwayland
