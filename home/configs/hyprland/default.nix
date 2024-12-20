@@ -8,14 +8,14 @@
     "$mod" = "SUPER";
     monitor = [
       "eDP-1, 1920x1200@60, 0x0, 1"
-      #"DP-2, 2560x1440@60, 1920x0, 1"
+      "DP-2, 2560x1440@60, 1920x0, 1"
       "DP-10, 2560x1440@60, 1920x0, 1"
       "DP-7, 2560x1440@60, 4480x0, 1"
 
     ];
     input = { kb_layout = "us"; };
     exec-once = [
-      "systemctl --user start graphical-session.target"
+      # "systemctl --user start graphical-session.target"
       "sh ~/.scripts/toggle-monitor.sh"
     ];
     general = {

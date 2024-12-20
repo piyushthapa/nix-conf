@@ -18,13 +18,6 @@ in
   programs.hyprlock = hyperlock_settings;
 
 
-  xdg.portal = {
-    enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    xdgOpenUsePortal = true;
-  };
-
-  xdg.portal.config.common.default = "*";
 
   home.pointerCursor = {
     gtk.enable = true;

@@ -94,6 +94,9 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    wireplumber = {
+      enable = true;
+    };
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
 
@@ -141,6 +144,10 @@
     kdePackages.qtwayland
     kdePackages.qtsvg
     dolphin
+
+    wl-clipboard
+    xdg-utils
+    vesktop
   ];
 
   programs.zsh = {
@@ -199,6 +206,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "24.11"; # Did you read the comment?
 
 }
