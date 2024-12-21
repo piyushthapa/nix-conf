@@ -130,7 +130,7 @@ local language_servers = {
       },
     }
   },
-  tsserver = {},
+  ts_ls = {},
   yamlls = {
     settings = {
       yaml = {

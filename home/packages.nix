@@ -1,5 +1,16 @@
 { pkgs, ... }:
 
+let
+  polybar_full = pkgs.polybar.overrideAttrs (old: {
+    alsaSupport = true;
+    iwSupport = true;
+    githubSupport = true;
+    pulseSupport = true;
+    nlSupport = true;
+    i3Support = true;
+  });
+
+in
 {
   home.packages = with pkgs; [
     #system 
@@ -43,7 +54,7 @@
     discord
     vlc
     zoom-us
-    transmission-gtk
+    transmission_4-gtk
     slack
 
     # dev
@@ -67,6 +78,7 @@
     pavucontrol
     openshot-qt
     obs-studio
+    ranger
 
     # languages
     python310
@@ -80,8 +92,12 @@
     gpu-screen-recorder-gtk
 
     #Hyprland
-    waybar
-    fuzzel
+    # waybar
+    # fuzzel
+
+    # i3
+    polybar_full
+    feh
 
   ];
 }

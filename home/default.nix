@@ -1,33 +1,49 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 let
   vimsettings = import ./configs/nvim;
   kittysettings = import ./configs/kitty.nix;
-  hyperlandsettings = import ./configs/hyprland;
-  waybarsettings = import ./configs/hyprland/waybar;
-  hyperlock_settings = import ./configs/hyprland/hyprlock.nix;
-in
-{
+  i3settings = import ./configs/i3;
+  nixvimsettings = import ./configs/nix_nvim;
+in {
 
   imports = [ ./packages.nix ];
 
-  programs.neovim = vimsettings pkgs;
+  # programs.neovim = vimsettings pkgs;
   programs.kitty = kittysettings;
-  wayland.windowManager.hyprland = hyperlandsettings pkgs;
-  programs.waybar = waybarsettings;
-  programs.hyprlock = hyperlock_settings;
+  programs.rofi = { enable = true; };
 
+  programs.nixvim = nixvimsettings pkgs;
 
-
-  home.pointerCursor = {
-    gtk.enable = true;
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Classic";
-    size = 16;
+  # Enable Xorg Compositor
+  services.picom = {
+    enable = true;
+    vSync = true;
   };
 
+  xsession.windowManager.i3 = i3settings pkgs;
+
+  #services.polybar = {
+  #  enable = true;
+  #  script = "";
+  #  package = pkgs.polybar.override {
+  #    alsaSupport = true;
+  #    iwSupport = true;
+  #    githubSupport = true;
+  #    pulseSupport = true;
+  #    nlSupport = true;
+  #    i3Support = true;
+  #  };
+  #};
+
   home.file = {
-    ".config/efm-langserver/config.yaml".text = builtins.readFile ./configs/efm-langserver/config.yaml;
-    ".scripts/toggle-monitor.sh".text = builtins.readFile ./configs/scripts/toggle-monitor.sh;
+    ".config/efm-langserver/config.yaml".text =
+      builtins.readFile ./configs/efm-langserver/config.yaml;
+    ".config/polybar/config.ini".text =
+      builtins.readFile ./configs/i3/polybar/polybar.ini;
+    ".config/polybar/launch.sh".text =
+      builtins.readFile ./configs/i3/polybar/launch_polybar.sh;
+    ".scripts/toggle-monitor.sh".text =
+      builtins.readFile ./configs/scripts/toggle-monitor.sh;
   };
 }

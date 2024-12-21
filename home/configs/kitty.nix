@@ -1,6 +1,6 @@
 {
   enable = true;
-  theme = "Catppuccin-Macchiato";
+  themeFile = "Catppuccin-Macchiato";
   settings = {
     font_size = "15.0";
     font_family = "JetBrains Mono ExtraLight";
