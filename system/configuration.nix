@@ -90,12 +90,11 @@
       ];
     };
   };
-  
+
   # setup disk mount
   services.devmon.enable = true;
   services.gvfs.enable = true;
   services.udisks2.enable = true;
-
 
   programs.dconf.enable = true;
 

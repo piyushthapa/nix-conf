@@ -42,9 +42,7 @@
       installGhc = false;
     };
 
-    nil_ls = {
-      enable = true;
-    };
+    nil_ls = { enable = true; };
   };
 
 }

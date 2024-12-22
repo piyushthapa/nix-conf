@@ -33,10 +33,7 @@ in {
 
   keymaps = keymaps;
 
-
-  globals = {
-    mapleader = " ";
-  };
+  globals = { mapleader = " "; };
 
   extraConfigLua = builtins.readFile ./init.lua;
 
