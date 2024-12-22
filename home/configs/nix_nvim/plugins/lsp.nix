@@ -44,9 +44,6 @@
 
     nil_ls = {
       enable = true;
-      settings = {
-        "nil" = { formatting = { command = [ "nixpkgs-fmt" ]; }; };
-      };
     };
   };
 

@@ -1,12 +1,11 @@
 {
   enable = true;
-  themeFile = "Catppuccin-Macchiato";
   settings = {
     font_size = "15.0";
-    font_family = "JetBrains Mono ExtraLight";
-    bold_font = "JetBrains Mono ExtraLight";
-    italic_font = "JetBrains Mono ExtraLight";
-    bold_italic_font = "JetBrains ExtraLight";
+    font_family = "JetBrains Mono Light";
+    bold_font = "JetBrains Mono Light";
+    italic_font = "JetBrains Mono Light";
+    bold_italic_font = "JetBrains Light";
     foreground = "#CAD3F5";
     background = "#24273A";
     selection_foreground = "#24273A";

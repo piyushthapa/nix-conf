@@ -1,7 +1,6 @@
 { pkgs, inputs, ... }:
 
 let
-  vimsettings = import ./configs/nvim;
   kittysettings = import ./configs/kitty.nix;
   i3settings = import ./configs/i3;
   nixvimsettings = import ./configs/nix_nvim;
@@ -9,7 +8,6 @@ in {
 
   imports = [ ./packages.nix ];
 
-  # programs.neovim = vimsettings pkgs;
   programs.kitty = kittysettings;
   programs.rofi = { enable = true; };
 

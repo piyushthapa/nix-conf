@@ -10,8 +10,7 @@ let
     i3Support = true;
   });
 
-in
-{
+in {
   home.packages = with pkgs; [
     #system 
     socat
@@ -79,6 +78,7 @@ in
     openshot-qt
     obs-studio
     ranger
+    nautilus
 
     # languages
     python310

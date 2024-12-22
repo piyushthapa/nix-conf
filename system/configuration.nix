@@ -14,6 +14,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.supportedFilesystems = [ "ntfs" ];
 
   #boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_6_1.override {
   #  argsOverride = rec {
@@ -36,7 +37,6 @@
 
   # links /libexec from derivations to /run/current-system/sw
   environment.pathsToLink = [ "/libexec" ];
-
 
   # Virtual machines
   #virtualisation.virtualbox.host.enable = true;
@@ -70,46 +70,41 @@
   #    inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   #};
 
-
   services.xserver.deviceSection = ''Option "TearFree" "true"''; # For amdgpu.
 
-
-  services.displayManager = {
-    defaultSession = "none+i3";
-  };
+  services.displayManager = { defaultSession = "none+i3"; };
   services.xserver = {
     enable = true;
     enableTearFree = true;
     enableCtrlAltBackspace = true;
 
-    desktopManager = {
-      xterm.enable = false;
-    };
-
+    desktopManager = { xterm.enable = false; };
 
     windowManager.i3 = {
       enable = true;
       extraPackages = with pkgs; [
-        dmenu #application launcher most people use
+        dmenu # application launcher most people use
         i3status # gives you the default i3 status bar
-        i3lock #default i3 screen locker
-        i3blocks #if you are planning on using i3blocks over i3status
+        i3lock # default i3 screen locker
+        i3blocks # if you are planning on using i3blocks over i3status
       ];
     };
   };
+  
+  # setup disk mount
+  services.devmon.enable = true;
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
+
 
   programs.dconf.enable = true;
 
-
   # setup AMD GPU
   services.xserver.videoDrivers = [ "amdgpu" ];
-  # hardware.graphics.extraPackages = with pkgs; [ rocmPackages.clr.icd ];
+  hardware.graphics.extraPackages = with pkgs; [ rocmPackages.clr.icd ];
 
   # Setup Trezor
-  services.trezord = {
-    enable = true;
-  };
-
+  services.trezord = { enable = true; };
 
   #
   # Enable CUPS to print documents.
@@ -124,9 +119,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    wireplumber = {
-      enable = true;
-    };
+    wireplumber = { enable = true; };
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
 
@@ -189,14 +182,13 @@
   programs.ssh = { startAgent = true; };
 
   # Fonts
-  fonts.packages = with pkgs;
-    [
-      font-awesome
-      material-icons
-      (nerdfonts.override {
-        fonts = [ "FiraCode" "DroidSansMono" "FiraMono" "JetBrainsMono" ];
-      })
-    ];
+  fonts.packages = with pkgs; [
+    font-awesome
+    material-icons
+    (nerdfonts.override {
+      fonts = [ "FiraCode" "DroidSansMono" "FiraMono" "JetBrainsMono" ];
+    })
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

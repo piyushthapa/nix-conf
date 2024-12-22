@@ -1,23 +1,26 @@
 { pkgs, lib, ... }:
-let
-  mod = "Mod4";
+let mod = "Mod4";
 
-in
-{
+in {
   enable = true;
   package = pkgs.i3-gaps;
 
   config = {
-    bars = [
-      { mode = "invisible"; }
-    ];
+    bars = [{ mode = "invisible"; }];
     modifier = mod;
     terminal = "kitty";
+    window = {
+      border = 1;
+      titlebar = false;
+    };
 
     startup = [
       # TODO: disable only if external monitor is connected
       { command = "xrandr --output eDP --off"; }
-      { command = "sh ~/.config/polybar/launch.sh"; always = true; }
+      {
+        command = "sh ~/.config/polybar/launch.sh";
+        always = true;
+      }
       {
         command = "feh --bg-scale ~/Documents/wallpapers/nixos-ascii-1.png";
         always = true;

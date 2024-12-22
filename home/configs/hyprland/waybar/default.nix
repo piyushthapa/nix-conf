@@ -11,14 +11,8 @@
 
     modules-left = [ "hyprland/workspaces" ];
     modules-center = [ "clock" ];
-    modules-right = [
-      "pulseaudio"
-      "network"
-      "cpu"
-      "temperature"
-      "battery"
-      "tray"
-    ];
+    modules-right =
+      [ "pulseaudio" "network" "cpu" "temperature" "battery" "tray" ];
 
     battery = {
       format = "{capacity}% {icon}";
@@ -33,7 +27,9 @@
     };
 
     "clock" = {
-      tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+      tooltip-format = ''
+        <big>{:%Y %B}</big>
+        <tt><small>{calendar}</small></tt>'';
       format = "{:%a; %d %b, %I:%M %p}";
     };
 
