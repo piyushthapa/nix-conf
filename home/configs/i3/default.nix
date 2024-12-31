@@ -25,6 +25,8 @@ in {
         command = "feh --bg-scale ~/Documents/wallpapers/nixos-ascii-1.png";
         always = true;
       }
+      # Map caps lock key to ESC
+      {command = "setxkbmap -option caps:escape" ; }
     ];
 
     keybindings = lib.mkOptionDefault {

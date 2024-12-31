@@ -2,10 +2,10 @@
   enable = true;
   settings = {
     font_size = "15.0";
-    font_family = "JetBrains Mono Light";
-    bold_font = "JetBrains Mono Light";
-    italic_font = "JetBrains Mono Light";
-    bold_italic_font = "JetBrains Light";
+    font_family = "JetBrains Mono Thin";
+    bold_font = "JetBrains Mono Thin";
+    italic_font = "JetBrains Mono Thin";
+    bold_italic_font = "JetBrains Thin";
     foreground = "#CAD3F5";
     background = "#24273A";
     selection_foreground = "#24273A";

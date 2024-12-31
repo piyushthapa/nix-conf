@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -96,7 +96,10 @@
   services.gvfs.enable = true;
   services.udisks2.enable = true;
 
+  services.dbus.enable = true;
+
   programs.dconf.enable = true;
+
 
   # setup AMD GPU
   services.xserver.videoDrivers = [ "amdgpu" ];

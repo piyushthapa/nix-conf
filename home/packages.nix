@@ -90,6 +90,7 @@ in {
     protonvpn-cli
     cachix
     gpu-screen-recorder-gtk
+    networkmanagerapplet
 
     #Hyprland
     # waybar

@@ -26,6 +26,7 @@ in {
         GruvboxBlueSign = { bg = ""; };
         GruvboxAquaSign = { bg = ""; };
       };
+      contrast = "hard";
     };
   };
 

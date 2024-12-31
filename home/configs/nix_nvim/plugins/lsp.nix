@@ -10,12 +10,18 @@
     "<leader>wr" = "remove_workspace_folder";
   };
 
+  capabilities =
+    ''
+      require('blink.cmp').get_lsp_capabilities()
+    '';
+
   servers = {
     aiken = {
       enable = true;
       cmd = [ "aiken" "lsp" ];
       filetypes = [ "aiken" "ak" ];
       rootDir = "require('lspconfig.util').root_pattern('aiken.toml')";
+      package = null;
     };
 
     bashls = { enable = true; };

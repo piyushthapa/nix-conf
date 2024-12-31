@@ -13,9 +13,10 @@ in {
   lualine = lualinePlugin;
   telescope = telescopePlugin;
   lsp = lspPlugin;
-  cmp = cmpPlugin;
+  # cmp = cmpPlugin;
   neogit = neogitPlugin;
   nvim-tree = nvimTreePlugin;
+  blink-cmp = import ./blink_cmp.nix;
 
   indent-blankline = { enable = true; };
   treesitter = {
