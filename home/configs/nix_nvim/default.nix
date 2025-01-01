@@ -54,4 +54,6 @@ in {
 
     pkgs.nixpkgs-fmt
   ];
+
+  extraFiles = import ./ftplugin.nix;
 }

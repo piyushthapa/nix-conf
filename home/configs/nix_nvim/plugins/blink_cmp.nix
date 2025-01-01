@@ -8,6 +8,7 @@
       auto_show_delay_ms = 500;
     };
     ghost_text = { enabled = true; };
+    keymap = { preset = "enter"; };
     sources = {
       copilot = {
         async = true;
