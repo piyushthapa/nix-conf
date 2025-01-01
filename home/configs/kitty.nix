@@ -1,12 +1,11 @@
 {
   enable = true;
-  theme = "Catppuccin-Macchiato";
   settings = {
     font_size = "15.0";
-    font_family = "JetBrains Mono";
-    bold_font = "JetBrains Mono";
-    italic_font = "JetBrains Mono";
-    bold_italic_font = "JetBrains Mono";
+    font_family = "JetBrains Mono Thin";
+    bold_font = "JetBrains Mono Thin";
+    italic_font = "JetBrains Mono Thin";
+    bold_italic_font = "JetBrains Thin";
     foreground = "#CAD3F5";
     background = "#24273A";
     selection_foreground = "#24273A";
@@ -48,7 +47,5 @@
     color15 = "#A5ADCB";
   };
 
-  keybindings = {
-    "ctrl+shift+enter" = "new_window_with_cwd";
-  };
+  keybindings = { "ctrl+shift+t" = "new_tab_with_cwd"; };
 }
