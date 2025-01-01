@@ -1,53 +1,104 @@
 { pkgs, ... }:
 
+let
+  polybar_full = pkgs.polybar.overrideAttrs (old: {
+    alsaSupport = true;
+    iwSupport = true;
+    githubSupport = true;
+    pulseSupport = true;
+    nlSupport = true;
+    i3Support = true;
+  });
 
-{
+in {
   home.packages = with pkgs; [
     #system 
-    socat	git
+    socat
+    git
 
     # Cli tools
-    ripgrep fzf  unzip curl wget  gcc agrep xclip silver-searcher updog kubectl magic-wormhole ngrok  zlib zlib.dev
+    ripgrep
+    fzf
+    unzip
+    curl
+    wget
+    gcc
+    agrep
+    xclip
+    silver-searcher
+    updog
+    kubectl
+    magic-wormhole
+    ngrok
+    zlib
+    zlib.dev
+    protonvpn-cli
+    protonvpn-gui
 
     # terminal
-    alacritty kitty
-
-    # Haskell
-    stylish-haskell
+    alacritty
+    kitty
+    zellij
 
     # editors 
-    vscode lapce
+    vscode
 
     # Vscode
     vscode-extensions.github.copilot
-    
+
     # Internet
-    firefox brave tdesktop discord vlc zoom-us transmission-gtk slack
+    firefox
+    brave
+    tdesktop
+    discord
+    vlc
+    zoom-us
+    transmission_4-gtk
+    slack
 
     # dev
     insomnia
 
     # db explorer
-    robo3t jetbrains.datagrip dbeaver
+    robo3t
+    jetbrains.datagrip
+    dbeaver-bin
 
     # Fonts
     jetbrains-mono
 
     # language servers
+    efm-langserver
 
     # misc
-    foliate  libreoffice
+    foliate
+    libreoffice
+    typst
+    pavucontrol
+    openshot-qt
+    obs-studio
+    ranger
+    nautilus
 
     # languages
-    python310 deno
-
-    #gnome extensions
-    gnomeExtensions.gsconnect  gruvbox-dark-gtk
+    python310
+    deno
 
     # Rust toolchain
     rustup
 
-    protonvpn-cli cachix gpu-screen-recorder-gtk
+    protonvpn-cli
+    cachix
+    gpu-screen-recorder-gtk
+    networkmanagerapplet
+
+    #Hyprland
+    # waybar
+    # fuzzel
+
+    # i3
+    polybar_full
+    feh
 
   ];
 }
