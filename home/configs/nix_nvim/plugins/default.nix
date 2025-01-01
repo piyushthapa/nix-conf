@@ -2,18 +2,15 @@ let
   lualinePlugin = import ./lualine.nix;
   telescopePlugin = import ./telescope.nix;
   lspPlugin = import ./lsp.nix;
-  cmpPlugin = import ./cmp.nix;
   neogitPlugin = import ./neogit.nix;
   nvimTreePlugin = import ./nvim-tree.nix;
 
 in {
 
   web-devicons.enable = true;
-
   lualine = lualinePlugin;
   telescope = telescopePlugin;
   lsp = lspPlugin;
-  # cmp = cmpPlugin;
   neogit = neogitPlugin;
   nvim-tree = nvimTreePlugin;
   blink-cmp = import ./blink_cmp.nix;
@@ -23,7 +20,23 @@ in {
     enable = true;
     settings = {
       indent.enable = true;
-      ensure_installed = "all";
+      ensure_installed = [
+        "c"
+        "bash"
+        "html"
+        "lua"
+        "markdown"
+        "markdown_inline"
+        "vim"
+        "vimdoc"
+        "elixir"
+        "haskell"
+        "typescript"
+        "rust"
+        "elm"
+        "go"
+        "zig"
+      ];
       auto_install = true;
       highlight.enable = true;
       rainbow.enable = true;
@@ -70,6 +83,15 @@ in {
   floaterm = {
     enable = true;
     keymaps.toggle = "<C-`>";
+  };
+
+  none-ls = {
+    enable = true;
+    # Enable prettierd for js files
+    sources.formatting.prettierd = {
+      enable = true;
+      disableTsServerFormatter = true;
+    };
   };
 
 }

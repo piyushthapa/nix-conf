@@ -26,7 +26,7 @@ in {
         always = true;
       }
       # Map caps lock key to ESC
-      {command = "setxkbmap -option caps:escape" ; }
+      { command = "setxkbmap -option caps:escape"; }
     ];
 
     keybindings = lib.mkOptionDefault {

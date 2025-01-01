@@ -10,10 +10,9 @@
     "<leader>wr" = "remove_workspace_folder";
   };
 
-  capabilities =
-    ''
-      require('blink.cmp').get_lsp_capabilities()
-    '';
+  capabilities = ''
+    require('blink.cmp').get_lsp_capabilities()
+  '';
 
   servers = {
     aiken = {
@@ -48,7 +47,18 @@
       installGhc = false;
     };
 
-    nil_ls = { enable = true; };
+    ts_ls = { enable = true; };
+
+    nil_ls = { 
+      enable = true; 
+      settings = {
+        formatting = { 
+          command = ["nixfmt"];
+        };
+      };
+    };
+
+    lua_ls = { enable = true; };
   };
 
 }

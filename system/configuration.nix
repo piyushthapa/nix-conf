@@ -100,7 +100,6 @@
 
   programs.dconf.enable = true;
 
-
   # setup AMD GPU
   services.xserver.videoDrivers = [ "amdgpu" ];
   hardware.graphics.extraPackages = with pkgs; [ rocmPackages.clr.icd ];
