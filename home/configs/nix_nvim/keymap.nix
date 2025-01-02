@@ -11,4 +11,11 @@
     options.silent = true;
   }
 
+  {
+    key = "<tab>";
+    mode = "n";
+    action = "<CMD>:tabNext<CR>";
+    options.silent = true;
+  }
+
 ]
